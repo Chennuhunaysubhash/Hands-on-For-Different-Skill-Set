@@ -1,0 +1,10 @@
+class Boxing 
+{
+	public static void main(String[] args) 
+	{
+		int x = 10;
+		Integer y = Integer.valueOf(x);
+		String z = Integer.toString(y);
+		System.out.println("z value: "+typeOf(z));
+	}
+}

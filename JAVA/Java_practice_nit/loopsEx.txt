@@ -1,0 +1,110 @@
+/*Two number are entered through the keyboard. write a program to find the value of one number rasied to the power of anthor.(Do not use Java built in method)*/
+import java.util.Scanner;
+
+class PowerOfTwoNumbers 
+{
+	public static void main(String[] args) 
+	{
+		Scanner sc = new Scanner(System.in);
+		System.out.print("Enter the Power is: ");
+		int power = sc.nextInt();
+		System.out.print("Enter the Base is: ");
+		int base = sc.nextInt();
+		System.out.println();
+		int result = 1;
+		for(int i =1;i<=power;i++)
+		{
+			result = result*base;
+		}
+		System.out.println(base+" power "+power+" is: "+result);
+	}
+}
+
+
+
+/*Write a program for reversed the Integer Number(Ex: 12345 ---> 54321) */
+import java.util.Scanner;
+class IntegerReversed  
+{
+	public static void main(String[] args) 
+	{
+		Scanner sc = new Scanner(System.in);
+		System.out.print("Enter The Integer Number: ");
+		int num = sc.nextInt();
+		int reverse = 0;
+		int temp;
+		int remainder =0;
+		temp = num;
+		/*main logic of program*/
+		while(temp>0)
+		{
+			remainder = temp%10;
+			reverse = reverse*10+ remainder;
+			temp = temp/10;  //temp /= 10;
+		}
+		System.out.println(); // just for output format
+		System.out.println("Reverse of Integer Number"+num+" is: "+reverse);
+		System.out.println(); // just for output format
+
+	}
+}
+
+
+/*write a program that reads a set of integers, and then print the sum of the even and odd integer(sum of the even numbers and odd numbers)*/
+import java.util.Scanner;
+class SumOfEvenAndOdd 
+{
+	public static void main(String[] args) 
+	{
+		Scanner sc = new Scanner(System.in);
+		int number;
+		char choice;
+		int evenSum = 0, oddSum = 0;
+		do
+		{
+			System.out.print("Enter the Number: ");
+			number = sc.nextInt();
+			if(number%2==0){
+				evenSum = evenSum+number;
+			}
+			else{
+				oddSum = oddSum+number; 
+			}
+			System.out.print("Do you want to continue y/n? :");
+			choice = sc.next().charAt(0);
+		}
+		while (choice=='y'||choice=='Y');
+
+		System.out.println("Sum of the even numbers: "+evenSum);
+		System.out.println("Sum of the odd numbers: "+oddSum);
+	}
+}
+
+
+/* write a program to calculate HCF of two given number.*/
+import java.util.Scanner;
+class HcfTwoNumbers 
+{
+	public static void main(String[] args) 
+	{
+		Scanner sc = new Scanner(System.in);
+		int a,b,i,hcf=0;
+		System.out.print("Enter the first number is: ");
+		a = sc.nextInt();
+		System.out.print("Enter the second number is: ");
+		b = sc.nextInt();
+		for(i = 1; i<=a|| i<=b; i++)
+		{
+			if(a%i==0 && b%i==0)
+			{
+				hcf = i;
+			}
+		}
+		System.out.println("HCF = "+hcf);
+	}
+}
+
+/*ouput: 12, 24
+common factors 2,3,4,6,12
+high common factor is 12
+*/

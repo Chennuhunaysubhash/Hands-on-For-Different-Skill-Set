@@ -1,0 +1,172 @@
+*{
+padding: 0;
+margin: 0;
+text-decoration: none;
+list-style: none;
+box-sizing: border-box;
+}
+body{
+font-family: montserrat;
+ background-size: cover;
+    background-image: url("background.jpeg");
+    background-repeat: no-repeat;
+    background-color: #bfbfbf;
+}
+nav{
+    background-color: #e0ebeb;
+    height: 0px;
+    width: 100%;
+}
+label.logo{
+    color: black;
+    font-size: 35px;
+    line-height: 80px;
+    padding: 0 30px;
+    font-weight: bold;
+}
+nav ul{
+    
+    float: right;
+    margin-right: 1px;
+}
+nav ul li{
+    display: inline-block;
+    line-height: 80px;
+    margin: 0 5px;
+}
+nav ul li a{
+    color: rgb(0, 0, 0);
+    font-size: 17px;
+    padding: 7px 13px;
+    border-radius: 3px;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+a.active,a:hover{
+background: #1b9bff;
+transition: 0.5s;
+}
+
+
+@media(max-width: 952pcx){
+    label.logo{
+        font-size: 30px;
+        padding-left: 50px;
+    }
+    nav ul li a{
+       font-size: 16px;
+    }
+    @media(max-width: 850px){
+        .checkbtn{
+            display: block;
+        }
+    }
+
+ul{
+    position: fixed;
+    width:100%;
+    height: 100vh;
+    background: #2c3e50;
+    top: 80px;
+    left: 0;
+    text-align: center;
+    transition: all 0.5s;
+}
+nav ul li{
+    display: block;
+    margin: 50px 0;
+    line-height: 30px;
+}
+nav ul li a{
+    font-size: 20px;
+}
+a:hover,a.active{
+    background: none;
+    color: #0082e6;
+}
+  #check:checked ~ ul{
+      left: 0;
+  }
+}
+
+.sizee{
+    height: 100%;
+    width: 100%;
+    
+}
+div{
+    
+    margin-top: 150px;
+    margin-left: 70px;
+    padding: 0;  
+}
+.pro h2{
+    font-size: 2.5em;
+    font-family: cursive;
+    font-style: oblique;
+    color: white; 
+}
+.pro h3{
+    padding: 25px;
+    font-size: 1.3em;
+    font-family: cursive;
+    font-style: oblique;
+}
+h4{
+    padding: 25px;
+    font-size: 1.3em;
+    margin-left: 65px;
+    font-family: cursive;
+    font-style: oblique;
+    color: white;
+}
+#matter{
+     margin-left: 65px;
+    margin-right: 55px;
+    padding: 15px;
+    font-size: 1.1em;
+    font-family: cursive;
+    font-weight: bold;
+    font-style: oblique;
+    opacity: 0.8;
+}
+#software{
+    margin-left: 65px;
+    padding: 10px;
+    font-size: 1.5em;
+    font-weight: bold;
+    font-style: oblique;
+    color: white;
+}
+#soft{
+   text-align: center;
+     margin-left: 55px;
+    font-size: 1.25em;
+    font-weight: bold;
+    font-style: oblique;
+    color: white;
+}
+#soft span{
+     font-size: 1.4em;
+    font-weight: bold;
+    font-style: oblique;
+    color: black;
+}
+.more{
+    margin-top: 90px;
+    font-size: 1.4em;
+    font-style: oblique;
+    font-weight: bold;
+    color: black;
+    text-align:  right;
+    margin-right: 50px;
+}
+#pdf{
+    font-size: 0.8em;
+    color: black;
+}
+.more a{
+    cursor: pointer;
+    color: blue;
+    font-size: 0.9em;
+} 

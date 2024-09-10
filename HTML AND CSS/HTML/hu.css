@@ -1,0 +1,31 @@
+body{
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    background: #34495e;
+}
+.box{
+    width: 300px;
+    padding: 40px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    background: #0f0909;
+    text-align: center;
+	border-radius: 30px;
+}
+.box h1{
+    color: white;
+    text-transform: uppercase;
+    font-weight: 500;
+}
+.box input{
+    width:150px;
+    height: 50px;
+    margin: 20px auto;
+    background-color: violet;
+    border-radius: 20px;
+    background: url('D:\my html tool/page.html');
+    cursor: pointer;
+}

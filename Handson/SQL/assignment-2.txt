@@ -1,0 +1,130 @@
+26. Display the total number of employees working for the company.
+ans
+select count(*) as "total employee" from emp;
+27. Display the total salary begging paid to all employees.
+ans
+select sum(sal) as "total salary" from emp;
+			or
+select sum(sal) from emp;
+28. Display the maximum salary from emp table.
+ans
+select max(sal) from emp;
+29. Display the minimum salary from emp table.
+ans
+select min(sal) from emp;
+30. Display the average salary from emp table.
+ans
+SQL> select avg(sal) from emp;
+31.Display the maximum salary being paid to the CLERK.
+ans
+select max(sal) from emp where job = 'CLERK'; 
+32.Display the maximum salary being paid to depart number 20.
+ans
+select max(sal) from emp where deptno = '20';
+			or
+select max(sal) from emp where deptno = 20;
+33. Display the minimum salary being paid to any SALESMAN.
+ans
+select min(sal) from emp where job = 'SALESMAN';
+34. Display the average salary drawn by MANAGERS.
+ans 
+select avg(sal) from emp where job = 'MANAGER';
+35. Display the total salary drawn by ANALYST working in depart number40.
+ans
+select sum(sal) from emp where job = 'ANALYST' AND deptno = 40;
+36. Display the names of the employee in order of salary, i.e., the name of the employee earning the lowest salary should salary appear first.
+ans
+select ename from emp order by sal;
+37. Display the names of the employee in descending order of salary.
+ans
+select ename from emp order by sal desc;
+38. Display the names of the employee in order of employee name.
+ans
+select ename from emp order by ename;
+39. Display empno, ename, deptno, sal sort the output first base on the name and within name by deptno and within deptno by sal.
+ans
+select empno, ename, deptno, sal from emp order by ename, deptno, sal;
+40. Display the name of the employee along with their annual salary (sal*12).T the name of the employee earning the highest annual salary, should appear first.
+ans
+select ename, sal*12 from emp order by sal desc;
+41. Display name, salary, hra, pf, da, total salary for each employee. The output should be in the order of total salary; hra 15% of salary, da 10%of salary, pf 5%salary, and total salary will be (salary+hra+da-pf).
+ans
+select ename, sal, sal/100*15 as hra, sal/100*5 as pf, sal/100*10 as da, sal+sal/100*15+sal/100*10-sal/100*5 as total from emp;
+42. Display depart numbers and the total number of employees working in each department.
+ans
+select deptno, count (deptno) from emp group by deptno;
+43. Display the various jobs and the total number of employees within each job group.
+ans
+select job, count (job) from emp group by job;
+44. Display the depart numbers and total salary for each department.
+ans
+select deptno, sum (sal) from emp group by deptno;
+45. Display the depart numbers and max salary for each department.
+ans
+ select deptno, max (sal) from emp group by deptno;
+46. Display the various jobs and total salary for each job.
+ans 
+select job, sum (sal) from emp group by job;
+47. Display the various jobs and total salary for each job.
+ans
+select job, sum (sal) from emp group by job;
+48. Display the depart numbers with more than three employees in each dept.
+ans
+select deptno, count (deptno) from emp group by deptno having count (*) >3;
+49. Display the various jobs along with the total salary for each of the jobs where the total salary is greater than 40000.
+ans
+select job, sum (sal) from emp group by job having sum (sal) >40000;
+		or
+select job, sum (sal) from emp group by job having sum (sal) >4000;
+50. Display the various jobs along with the total number of employees in each job. The output should contain only those jobs with more than three employees.
+ans
+Select job,count(*) from emp group by job having count(*)>3
+51. Which of the following queries can you use to search for employeeswith the pattern 'A_B' in their names?
+ans
+SELECT ename FROM emp WHERE ename LIKE '%A\_B%' ESCAPE'\';
+52. find the First occurrence of the character ‘a’ from the following string, i.e., ‘Computer Maintenance Corporation.’
+ans
+SELECT INSTR ('Computer Maintenance Corporation','a', 1) FROM DUAL;
+53. Display the information from the emp table. Where the job manager is found, it should be displayed as boos (Use replace function).
+ans
+select replace (JOB,’MANAGER’,’BOSS’) FROM EMP;
+54. Display the names of the employees in Uppercase.
+ans
+select upper (ename) from emp;
+55. Display the names of the employees in Lowercase.
+ans
+select lower (ename) from emp;
+56. Display the names of the employees in Proper case.
+ans
+select initcap (ename) from emp;
+57. Display the length of your name using an appropriate function.
+ans
+select length('name') from dual;
+58. Display the length of all the employee names.
+ans
+select length (ename) from emp;
+59. Select the name of the employee to concatenate with the employee number.
+ans
+select ename||empno from emp;
+60. User appropriate function and extract 3characters starting from 2characters from the following string ‘Oracle.’ I.e., the output should be ‘ac.’
+ans
+select substr ('oracle', 2, 3) from dual;
+61. Display empno, ename, deptno from emp table. Instead of a display, department numbers display the related department name (Use decode function).
+ans 
+select empno, ename, decode (deptno, 10,'ACCOUNTING', 20,'RESEARCH', 30,'SALES', 40,'OPRATIONS') from emp;
+62. Display the current date as 15th August Friday Nineteen Ninety Seven.
+ans
+select to_char (sysdate,'ddth Month day year') from dual;
+63. display the following output for each row from emp table.
+
+for ex
+Scott has joined the company on Wednesday, 13th August, nineteen ninety.
+Sham has joined the company on Wednesday, 13th August, nineteen ninety.
+ans
+select ENAME||' HAS JOINED THE COMPANY ON'||to_char (HIREDATE,'dayddth Month year') from EMP;
+64. Find the date for the nearest Saturday after the current date.
+ans
+SELECT NEXT_DAY (SYSDATE, 'SATURDAY') FROM DUAL;
+65. Display the date three months before the current date.
+ans
+ select add_months (sysdate, 3) from dual;

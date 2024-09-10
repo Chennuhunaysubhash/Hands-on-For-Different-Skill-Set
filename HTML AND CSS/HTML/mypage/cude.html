@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Cube</title>
+        <style>
+body{
+    background:#1976d2;
+    margin:0;
+}
+#cube{
+    position:relative;
+    width:100%;
+    height:100vh;
+    perspective-origin:50% 50%;
+    transform-style:preserve-3d;
+    transition:4.99s linear;
+}
+.cuide{
+    background:#000;
+    position:absolute;
+    text-align:center;
+    font-family:Courier;
+    color:#0fd;
+    text-shadow:0px 0px 1px #000;
+    height:5em;
+    width:5em;
+    transform-origin:50% 50%;
+    font-size:3em;
+    left:50%;
+    top:50%;
+    margin-left:-2em;
+    margin-top:-2em;
+    line-height:5em;
+    opacity:0.8;
+    border:inset 7px #fff9;
+    transition:1s ease;
+    user-select:none;
+}
+.cuide:hover{
+    font-size:1em;
+    
+}
+#font{
+    background: #00f;
+    transform:translateZ(2em);
+}
+#back{
+    background:#0f0;
+    transform:translateZ(-2em)
+              rotateY(180deg);
+}
+#left{
+    background:#f50;
+    transform:rotateY(270deg)
+              translateZ(2em);
+}
+#right{
+    background:#0df;
+    transform:rotateY(-270deg)
+              translateZ(2em);
+}
+#top{
+    background:#ff0;
+    transform:rotateX(90deg)
+              translateZ(2em);
+}
+#bottm{
+    background:#f0f;
+    transform:rotateX(-90deg)
+              translateZ(2em);
+}
+img{
+    width:100%;
+    height:100%;
+}
+        </style>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    </head>
+    <body>
+<div id="cube">
+<div id="font" class="cuide">😇</div>
+<div id="back" class="cuide">😊</div>
+<div id="left" class="cuide">☺️</div>
+<div id="right" class="cuide">🤩</div>
+<div id="top" class="cuide">😋</div>
+<div id="bottm" class="cuide">🤗3</div>
+</div>
+    
+    <script>
+    
+setTimeout(rotat,10);
+setInterval(rotat,5000);
+
+function rotat(){
+    cube.style.transform="rotateX("+rndmdeg()+") rotateY("+rndmdeg()+") rotateZ("+rndmdeg()+")";
+};
+
+function rndmdeg(){
+    x=Math.ceil(Math.random()*720);
+    x-=360;
+    return x+"deg";
+};
+
+cube.addEventListener("click",setImg);
+function setImg(){
+    cuide= document.getElementsByClassName("cuide");
+    for (let i=0;i<cuide.length;i++){
+        cuide[i].innerHTML= '<img src="https://media1.tenor.com/images/cfd4d0289a32ed6484d40d82a9aca982/tenor.gif?itemid=4879727" alt="😇"/>';
+    };
+    cube.removeEventListener("click",setImg);
+};
+    </script>
+            <script src="./removeBanner.js"></script>
+    </body>
+</html>

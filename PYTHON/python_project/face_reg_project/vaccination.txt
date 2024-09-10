@@ -1,0 +1,10 @@
+        elif (age >= min_age and age < 60) and spc == 'no':
+            print('Vaccination Successfully Done')
+            write_data(candidate_name, num, age, spc, vacc)
+            amount = a + 1
+            return amount
+        elif (age >= min_age and age < 45) and spc == 'no':
+            print('Vaccination Successfully Done')
+            write_data(candidate_name, num, age, spc, vacc)
+            amount = a + 1
+            return amount

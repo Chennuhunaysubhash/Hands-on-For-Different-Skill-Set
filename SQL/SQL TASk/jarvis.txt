@@ -1,0 +1,15 @@
+import speech_recognition as spr
+listener = spr.Recognizer()
+va_name= 'jarvis'
+
+try:
+    with spr.Microphone() as source:
+        print("Listening...")
+        voice = listener.listen(source)
+        command = listener.recognize_google(voice)
+        command = command.lower()
+        if va_name in command:
+          command = command.replace(va_name+' ', '')
+          print(command)
+except:
+    print("check your MicroPhone")

@@ -1,0 +1,127 @@
+from random import randint
+import datetime
+import csv
+
+admin_id = [56789, 56790, 56791]
+admin_name = ['Hunaysubhash chennu', 'Sai krishna K', 'Manasa P']
+admin_password = ['hunay@money_bank', 'saikrishna@money_bank', 'manasa@money_bank']
+
+
+def write_data(user, account_no, mobile, types, Id, Batch, bank, amount):
+    with open('saving_accounts_data.csv', 'r+') as f:
+        mydatalist = f.readline()
+        namelist = []
+        for line in mydatalist:
+            entry = line.split(' ,')
+            namelist.append(entry[0])
+        if name not in namelist:
+            now = datetime.datetime.now()
+            dtstring = now.strftime('%H:%M:%S')
+            f.writelines(f'\n{user},{account_no},{mobile},{types},{Id},{Batch},{bank},{amount},{dtstring}')
+
+
+def write_data_for_business(user, account_no, mobile, types, Id, business, Batch, bank, amount):
+    with open('business_account_data.csv', 'r+') as f:
+        mydatalist = f.readline()
+        namelist = []
+        for line in mydatalist:
+            entry = line.split(' ,')
+            namelist.append(entry[0])
+        if name not in namelist:
+            now = datetime.datetime.now()
+            dtstring = now.strftime('%H:%M:%S')
+            f.writelines(f'\n{user},{account_no},{mobile},{types},{Id},{business},{Batch},{bank},{amount},{dtstring}')
+
+
+def balance_display(uname1, account1):
+    with open('saving_accounts_data.csv', 'r') as file:
+        reader = csv.reader(file)
+        uname = []
+        uaccount_no = []
+        uamont = []
+        account_type = []
+        for row in reader:
+            # print(row[0],"  ",row[1])
+            uname.append(row[0])
+            uaccount_no.append(row[1])
+            uamont.append(row[7])
+            account_type.append(row[3])
+    # print(uname)
+    # print(uamont)
+    # print(uaccount_no)
+    if uname1 in uname and account1 in uaccount_no:
+        ind = uaccount_no.index(account1)
+        print('User Name: {}'.format(uname1))
+        print('Account Number: {}'.format(uaccount_no))
+        am = uamont[ind]
+        print('Balance: {}'.format(am))
+
+def balance():
+    uname = input("user name: ")
+    uaccount = input('account Number: ')
+    account_type = input('account type: ')
+    if account_type.casefold() == 'saving':
+        balance_display(uname, uaccount)
+    elif account_type.casefold() == 'business':
+        balance_display(uname, uaccount)
+    else:
+        print('invalid account type..')
+def new_saving_account():
+    user = input('Enter The User Name: ')
+    user_id_proof = input("Enter The Id proof: ")
+    user_phone = input('Mobile Number: ')
+    account_type = input('Account Type:')
+    bank = input('Bank Name:')
+    batch = input("Enter The Batch Name:")
+    if account_type.casefold() == 'saving':
+        account_num1 = randint(1001, 9999)
+        account_num2 = randint(10, 99)
+        user_account_number = '62234'+str(account_num2)+str(account_num1)
+        # print(user, user_phone,user_account_number,user_id_proof,account_type)
+        print('user account number: {}'.format(user_account_number))
+        amount = int(input('Deposit Money: '))
+        write_data(user, user_account_number, user_phone, account_type.casefold(), user_id_proof, batch, bank, amount)
+    else:
+        print('incorrect account type.')
+
+
+def new_business_account():
+    user = input('Enter The User Name: ')
+    user_id_proof = input("Enter The Id proof: ")
+    user_phone = input('Mobile Number: ')
+    account_type = input('Account Type: ')
+    business = input("Business Name: ")
+    bank = input('Bank Name: ')
+    batch = input("Enter The Batch Name: ")
+    if account_type.casefold() == 'business':
+        account_num1 = randint(1001, 9999)
+        account_num2 = randint(10, 99)
+        user_account_number = '62234B'+str(account_num2)+str(account_num1)
+        # print(user, user_phone,user_account_number,user_id_proof,account_type)
+        print('user account number: {}'.format(user_account_number))
+        amount = int(input('Deposit Money: '))
+        write_data_for_business(user, user_account_number, user_phone, account_type.casefold(), user_id_proof, business, batch, bank, amount)
+    else:
+        print('incorrect account type.')
+
+
+Id = int(input('Admin id: '))
+name = input('Admin Name: ')
+password = input('Admin Password: ')
+if Id in admin_id and name in admin_name and password in admin_password:
+    print('1.Create New Saving Account.')
+    print('2.Create New Business Account.')
+    # print('3.Create New Joint Account.')
+    print('3.Balance Check.')
+    print('4.Withdrawal Money From Account.')
+    print('5.Remove User Account.')
+    print('6.Display The User Details.')
+    choice = int(input('Option: '))
+    if choice == 1:
+        new_saving_account()
+    elif choice == 2:
+        new_business_account()
+    elif choice == 3:
+        balance()
+else:
+    print('your are not admin of this work..')

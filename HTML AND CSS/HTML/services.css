@@ -1,0 +1,21 @@
+*
+{
+    margin: 0;
+    padding: 0;
+}
+body{
+    background: #000 !important;
+    color: #fff !important;
+}
+.service-box
+{
+    box-shadow: 0 0 4px 0 #ffa709;
+    padding: 15px;
+    position: relative;
+}
+.fa
+{
+    font-size: 40px !important;
+    margin-bottom: 20px;
+
+}

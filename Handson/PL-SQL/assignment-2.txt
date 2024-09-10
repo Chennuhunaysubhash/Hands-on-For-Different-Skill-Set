@@ -1,0 +1,148 @@
+1. Retrieve the first 5 employees with a jo history.
+ans
+Declare
+ cursor c1 is select ename,empno,sal,hiredate,job from emp ;
+ v_sal emp.sal%type;
+ v_empno emp.empno%type;
+ v_ename emp.ename%type;
+ v_hire  emp.hiredate%type;
+ v_job   emp.job%type;
+begin
+ open c1;
+dbms_output.put_line('------------------------------------');
+ loop
+
+   fetch c1 into v_ename,v_empno,v_sal,v_hire,v_job; 
+   exit when c1%rowcount >5;
+   dbms_output.put_line( v_ename||' '||v_job||' '||v_empno||' '||v_sal||' '||v_hire);
+ end loop;
+ dbms_output.put_line('-----------------------------------');
+End;
+
+2. Develop a PL/SQL block that determines the top employees with respect to salaries.
+
+a. Accept a number n from the user where n represents the number of top n earners from the new_emp table.
+
+b. There should be no duplication in the salaries. If two employees earn the same salary, the salary should be picked up only once.
+
+c. The output shown represents the five highest salaries in the new_emp table.
+
+ans
+Declare
+ cursor c1 is select ename,empno,sal,hiredate,job from emp order by sal desc ;
+ v_option INTEGER := &x;
+ v_sal emp.sal%type;
+ v_empno emp.empno%type;
+ v_ename emp.ename%type;
+ v_hire  emp.hiredate%type;
+ v_job   emp.job%type;
+begin
+ open c1;
+ loop
+   fetch c1 into v_ename,v_empno,v_sal,v_hire,v_job; 
+   exit when c1%rowcount > v_option;
+   
+   insert into new_emp2 values(v_empno, v_ename, v_job, v_sal, v_hire);
+ end loop;
+End;
+/
+
+3. Develop a Procedure which will add an employee record into an employee Database.
+
+Create or replace procedure insert_proc
+ ( p_empno emp.empno%type,
+   p_ename  emp.ename%type,
+   p_job emp.job%type,
+   p_mgr emp.mgr%type,
+   p_hire emp.hiredate%type,
+   p_sal  emp.sal%type,
+   p_comm emp.comm%type,
+   p_deptno emp.deptno%type
+  ) is 
+begin
+  insert into emp values( p_empno, p_ename, p_job, p_mgr, p_hire, p_sal,p_comm,p_deptno);
+  dbms_output.put_line('record inserted');
+end insert_proc;
+/
+
+exec insert_proc(7899,'HUNAY','ANALYST',7839,to_date('1-5-1981','dd-mm-yyyy'),5000, 300,10);
+
+4. Develop a Procedure which will update the eligibility status of Credit Holders to "N", whose Credit Limit exceeds the maximum range.
+
+ans
+
+Create or replace procedure upd_proc(p_status in Bank_cre.status%type)
+is
+begin
+ update Bank_cre set status = p_status where cre_ran > 45000;
+end upd_proc;
+
+BEGIN
+   upd_proc('N');
+END;
+
+5.  Create a procedure called QUERY_EMP to query the EMPLOYEES table, retrieving the salary and job ID for an employee when provided with the employee ID.
+a. Create a procedure that returns a value from the SALARY and JOB_ID columns for a specified employee ID.
+Use host variables for the two OUT parameters salary and job ID.
+b. Compile the code, invoke the procedure to display the salary and job ID for employee ID 4455.
+ans
+
+CREATE OR REPLACE PROCEDURE
+QUERY_EMP(empId IN employees.employee_id%type,jobId OUT employees.job_id%type,EmpSalary OUT employees.salary%type) IS
+BEGIN
+SELECT SALARY,JOB_ID INTO EMPSALARY, jobId FROM EMPLOYEES where EMPLOYEE_ID=empId;
+DBMS_OUTPUT.PUT_LINE('Salary is '||EMPSALARY||' and job id is '||jobId);
+END;
+/
+
+SET SERVEROUTPUT ON
+DECLARE
+Ide employees.job_id%type;
+sal employees.salary%type;
+BEGIN
+QUERY_EMP(120,IDE,SAL);
+DBMS_OUTPUT.PUT_LINE('Annonnymous Block Salary is '||sal||' and job id is '||Ide);
+END;
+
+6. Develop a function which will increase salary by 15% of all employees
+ans
+ create or replace function calculate_emp_salary_increment
+ (incpercent in number,
+ salary in number
+ )
+ return number
+ as
+ begin
+ return salary * incpercent/100;
+ end;
+ /
+7.Create a procedure, NEW_EMP, to insert a new employee into the EMPLOYEES table.
+The procedure should contain a call to the VALID_DEPTID function to check whether the department ID
+specified for the new employee exists in the DEPARTMENTS table.
+
+ans
+CREATE OR REPLACE FUNCTION VALID_DEPTID(dept employees.department_id%type) RETURN BOOLEAN IS
+dept_id employees.department_id%type;
+BEGIN
+select count(*) INTO dept_id from employees where department_id=dept;
+IF
+dept_id =0 THEN
+RETURN FALSE;
+ELSE
+RETURN TRUE;
+END IF;
+END;
+/
+
+SET SERVEROUTPUT ON
+DECLARE
+vale BOOLEAN;
+BEGIN
+vale :=VALID_DEPTID(12);
+IF vale=FALSE THEN
+DBMS_OUTPUT.PUT_LINE('false');
+ELSE
+DBMS_OUTPUT.PUT_LINE('true');
+END IF;
+END;
+

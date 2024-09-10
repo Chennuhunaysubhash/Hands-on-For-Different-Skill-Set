@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewpoint" content="width=device-width,initial-scale=1.0">
+    <meta charset="UTF-8">
+    <title>VIDEO POPUP</title>
+    <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+    <div class="banner">
+        <div class="content">
+            <img src="D:\my html tool/avengers.jpg" >
+            <h2>Video Popup on Click | javascript</h2>
+            <p>Marvel's The Avengers (classified under the name Marvel Avengers Assemble in the United Kingdom and Ireland), or simply The Avengers, is a 2012 American superhero film based on the Marvel Comics superhero team of the same name, produced by Marvel Studios and distributed by Walt Disney Studios Motion Pictures.</p>
+            <a href="#" onclick="toggle();">watch Trailer</a>
+        </div>
+    </div>
+    <div class="trailer">
+        <video src="D:\my html tool/avg.mp4" controls="true"></video>
+        <img src="D:\my html tool/close.png" class="close" onclick="toggle();">    
+    </div>
+    <script type="text/javascript">
+      function toggle(){
+          var trailer= document.querySelector(".trailer")
+          var video= document.querySelector("video")
+          trailer.classList.toggle("active")
+      }
+    </script>
+</body>
+</html>

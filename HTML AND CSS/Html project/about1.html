@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <meta charset="utf-8">
+  <title>navworking2</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="auto1.css">
+</head>
+<body>
+    <nav>
+              
+        <label class="logo">My Working Space..</label>
+
+        <ul>
+            <li><a class="active" href="#">Home</a></li>
+            <li><a href=" project.html">Projects</a></li>
+            <li><a href="skill2.html">Skills</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+        <hr>
+        
+    </nav>
+    
+  <div class="container">
+    <div class="box">
+      <div class="pop">
+        <h1  >auto typeing effect </h1>
+                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+                when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+                It has survived not only five centuries, but also the leap into electronic typesetting,remaining essentially unchanged.
+                It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+
+                </p>
+      </div>
+      
+    </div>  
+    <div class="box1">
+      <div class="pop2">
+        <h1 class="hed" >auto typeing effect </h1>
+                <p class="para">Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+                when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+                It has survived not only five centuries, but also the leap into electronic typesetting,remaining essentially unchanged.
+                It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+
+                </p>
+    </div>
+  </div>
+
+            <script>
+            function typeEffect(element,speed){
+               var text= element.innerHTML;
+               element.innerHTML="";
+
+               var i=0;
+               var timer=setInterval(function(){
+                    if(i<text.length){
+                    element.append(text.charAt(i));
+                    i++;
+                }
+                else{
+                clearInterval(timer);
+                }
+              }, speed);
+           }
+   var speed= 75;
+   var h1 = document.querySelector('.hed');
+   var p = document.querySelector('.para');
+   var delay = h1.innerHTML.length * speed + speed;
+
+   typeEffect(h1,speed);
+
+   setTimeout(function(){
+     p.style.display="inline-block";
+     typeEffect(p,speed);
+    },delay);
+        </script>
+
+</body>
+        
+    
+</html>

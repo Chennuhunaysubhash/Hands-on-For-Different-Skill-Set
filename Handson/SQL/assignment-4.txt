@@ -1,0 +1,89 @@
+96. display those department where no employee working.
+ans
+SELECT D.DNAME FROM DEPT D WHERE NOT EXISTS (SELECT * FROM EMP E WHERE D.DEPTNO = E.DEPTNO);
+97. Display those employees whose salary contains at least 3 digits?
+ans
+select * from emp where length (sal)>=3;
+98. Display those employees who joined the company in the month of DEC?
+ans
+select * from emp where upper (to_char (hiredate,'mon')) ='DEC';
+99. Display those employees whose name contains "A"?
+ans
+ select * from emp where instr(ename,'A', 1, 1)>0;
+100. Display those employees whose 10% of salary is equal to the year of joining?
+ans
+select * from emp where to_char (hiredate,'yy') =sal*10/100;
+101. Display those employees who are working in sales or research?
+ans
+select * from emp where deptno in (select deptno from dept where dname in ('SALES','RESEARCH'));
+102. Display those employees who joined the company before the 15Th of the month?
+ans
+select empno, ename from emp where hiredate< (to_date ('15-'||to_char(hiredate,'mon')||'-'||to_char(hiredate,'yyyy')));
+103. Delete those records where no of employee in a particular department is lessthan 3?
+ans
+delete from emp where deptno in (select deptno from emp group by deptno having count (*)>3);
+104. display the name of the department where no employee working.
+ans
+SELECT D.DNAME FROM DEPT D WHERE NOT EXISTS (SELECT * FROM EMP E WHERE D.DEPTNO = E.DEPTNO);
+105. Display those employees who are working as a manager?
+ans
+select * from emp where empno in (select mgr from emp);
+106. Print the details of all the employees who are subordinate to Blake.
+ans
+select * from emp where mgr= (select empno from emp where ename='BLAKE');
+107. Display the 10th record of EMP table. (without using rowid)
+ans
+SELECT * FROM emp WHERE rownum < 11
+MINUS
+SELECT * FROM emp WHERE rownum < 10;
+108. delete from emp where ename= (select ename from emp where rownum < =10 minus select ename from emp where rownum<10);
+109. Create a copy of emp table. 
+ans
+Create table emp1 as select * from emp;
+110. Select ename if ename exists more than once.
+ans
+select distinct (ename) from emp e where ename in (select ename from emp where e.empno<>empno);
+111. display all enames in reverse order?(SMITH:HTIMS).
+Ans
+SELECT ename,reverse(ename) as "reverse name" FROM emp;
+112. Display those employee whose joining date is available in dept no.
+ans
+select * from emp where to_char (hiredate,'dd') = deptno;
+113. Display those employee’s names as follows A ALLEN, B BLAKE.
+ans
+select substr (ename, 1, 1) ||' '||ename from emp;
+114. Delete the rows of employees who are working in the company for more than 2years.
+ans
+Delete from emp where floor (sysdate-hiredate)>2*365;
+115. Provide a commission(10% comm of sal) to employees who are not earning any commission.
+ans
+ update emp set comm=(sal*10/100) where comm is null;
+116. If any employee has commissioned his commission should be incremented by10% of his salary.
+ans
+update emp set comm=comm*10/100 where comm is not null;
+117. Display employee number, name, and location of the department in which he is working.
+ans
+select empno, ename, loc from emp e, dept d where e.deptno=d.deptno;
+118. Display ename, dname even if there no employees working in a particular department (use outer join).
+ans
+select ename, dname from emp e, dept d where e.deptno (+) =d.deptno;
+119.Display employee name and his manager name.
+ans
+select e.ename, m.ename from emp e, emp m where e.mgr=m.empno;
+120. write a query to delete the repeated row from emp table
+ans
+delete from emp where rowid not in (select min(rowid) from emp group by ename);
+121. to display 5 to 7 rowa from a table.
+ans
+select ename from emp  where rowid in (select rowid from emp where rownum<=7    minus  select rowid from emp where rownum<5 );
+122.  display top 10 row from table.
+ANS 
+select * from emp where rownum <= 10;
+123. Display top 3 salaries from emp.
+ans
+Select * from (select * from emp order by sal desc) where rownum <= 3 order by sal;
+124. display employee name and his salary is greater than highest average of department number.
+ans
+ select ename,deptno,sal from emp where sal>  (select max(avg(sal)) from emp group by deptno  );
+
+

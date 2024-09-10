@@ -1,0 +1,79 @@
+body{
+ background-image: linear-gradient(45deg,white,white);
+}
+.container
+{
+    height: 500px;
+    width: 500px;
+  
+    position: absolute;
+    margin: auto;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    perspective: 1000px;
+    -webkit-perspective: 1000px;
+}
+.circle{
+    height: 300px;
+    width: 300px;
+    border: 5px solid;
+    border-radius: 10%;
+    transform-style: preserve-3d;
+    -webkit-transform-style: preserve-3d ;
+    animation: rotate 6s infinite linear;
+}
+@keyframes rotate{
+    100%{
+        transform: rotateY(360deg)
+         rotateZ(360deg);
+    }
+}
+
+.circle>div{
+    height: 300px;
+    width: 300px;
+    position: absolute;
+    margin: auto;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    border-radius: 10%;
+}
+.circle>div:nth-child(1){
+    border: 5px solid red;
+    transform: rotateY(36deg);
+}
+.circle>div:nth-child(2){
+    border: 5px solid blue;
+    transform: rotateY(72deg);
+}
+.circle>div:nth-child(3){
+    border: 5px solid greenyellow;
+    transform: rotateY(108deg);
+}
+.circle>div:nth-child(4){
+    border: 5px solid orange;
+    transform: rotateY(144deg);
+}
+.circle>div:nth-child(5){
+    border: 5px solid rgb(253, 11, 213);
+    transform: rotateX(36deg);
+}
+.circle>div:nth-child(6){
+    border: 5px solid rgb(17, 243, 9);
+    transform: rotateX(72deg);
+}
+.circle>div:nth-child(7){
+    border: 5px solid rgb(255, 0, 34);
+    transform: rotateX(108deg);
+}
+.circle>div:nth-child(8){
+    border: 5px solid rgb(0, 238, 255);
+    transform: rotateX(144deg);
+}

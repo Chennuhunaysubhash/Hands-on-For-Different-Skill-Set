@@ -1,0 +1,15 @@
+Answer for Khan Academy Challenge: Customer's Orders: 
+Step 1: 
+SELECT customers.name, customers.email, orders.item, orders.price 
+    FROM customers 
+    LEFT OUTER JOIN orders
+    ON customers.id = orders.customer_id;
+    
+Step 2:
+SELECT customers.name, customers.email, SUM(price) AS total_money_spent
+    FROM customers 
+    LEFT OUTER JOIN orders
+    ON customers.id = orders.customer_id
+    
+    GROUP BY name
+    ORDER BY total_money_spent desc;

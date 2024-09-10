@@ -1,0 +1,148 @@
+1. Write a Procedure to display Author's lastname and firstname and return the total number of books written by the author placed on order.
+
+a. For Example:
+
+i. 4 books by Balaguruswamy, Ravindra ordered 
+ii. 6 books by William, John ordered
+
+ans
+
+
+Create or replace Procedure my_proc1
+               is
+
+  Cursor c1 is select last_name,first_name,no_book from author;
+Begin
+  For i in C1
+  Loop
+   dbms_output.put_line(i.no_book||' by '||i.last_name||','||i.first_name||' order.');
+  End Loop;
+End my_proc1;
+/
+
+
+exec my_proc1;
+
+2. Create a package for bank transactions that consist of a procedure to update the transaction table whenever a transaction occurs. The transaction may be deposit or withdraw. When the transaction is withdraw, the min balance should be 500/- In case the balance 500, it will result into Insufficient Balance Exception. The procedure should receive account number, transaction type and transaction amount as parameters Include another function for querying the balance of a given account number. Use the following transaction table.
+
+a. Transaction (account no., transaction type, amount of transaction, balance, date of transaction)
+
+ans
+
+CREATE PACKAGE bank_transactions AS
+   
+   minimum_balance  CONSTANT REAL := 500.00;
+   
+   PROCEDURE apply_transactions;
+   PROCEDURE enter_transaction (
+      acct   INT,
+      kind   CHAR,
+      amount REAL);
+END bank_transactions;
+/
+
+CREATE PACKAGE BODY bank_transactions AS
+   
+   new_status  VARCHAR2(70) := 'Unknown';
+
+   
+   PROCEDURE credit_account (acct INT, credit REAL);
+   PROCEDURE debit_account (acct INT, debit REAL);
+
+   
+   PROCEDURE apply_transactions IS
+   
+      CURSOR trans_cursor IS
+         SELECT acct_id, kind, amount FROM transactions
+            WHERE status = 'Pending'
+            ORDER BY time_tag
+            FOR UPDATE OF status;  
+   BEGIN
+      FOR trans IN trans_cursor LOOP
+         IF trans.kind = 'D' THEN
+            debit_account(trans.acct_id, trans.amount);
+         ELSIF trans.kind = 'C' THEN
+            credit_account(trans.acct_id, trans.amount);
+         ELSE
+            new_status := 'Rejected';
+         END IF;
+         UPDATE transactions SET status = new_status
+            WHERE CURRENT OF trans_cursor;
+      END LOOP;
+   END apply_transactions;
+
+   PROCEDURE enter_transaction (
+   
+      acct   INT,
+      kind   CHAR,
+      amount REAL) IS
+   BEGIN
+      INSERT INTO transactions
+         VALUES (acct, kind, amount, 'Pending', SYSDATE);
+   END enter_transaction;
+   
+   PROCEDURE do_journal_entry (
+   
+      acct    INT,
+      kind    CHAR,
+      new_bal REAL) IS
+   BEGIN
+      INSERT INTO journal
+         VALUES (acct, kind, new_bal, sysdate);
+      IF kind = 'D' THEN
+         new_status := 'Debit applied';
+      ELSE
+         new_status := 'Credit applied';
+      END IF;
+   END do_journal_entry;
+
+   PROCEDURE credit_account (acct INT, credit REAL) IS
+      old_balance REAL;
+      new_balance REAL;
+   BEGIN
+      SELECT balance INTO old_balance FROM accounts
+         WHERE acct_id = acct
+         FOR UPDATE OF balance;  
+      new_balance := old_balance + credit;
+      UPDATE accounts SET balance = new_balance
+         WHERE acct_id = acct;
+      do_journal_entry(acct, 'C', new_balance);
+   EXCEPTION
+      WHEN NO_DATA_FOUND THEN
+         new_status := 'Bad account number';
+      WHEN OTHERS THEN
+         new_status := SUBSTR(SQLERRM,1,70);
+   END credit_account;
+
+   PROCEDURE debit_account (acct INT, debit REAL) IS
+      old_balance REAL;
+      new_balance REAL;
+      insufficient_funds EXCEPTION;
+   BEGIN
+      SELECT balance INTO old_balance FROM accounts
+         WHERE acct_id = acct
+         FOR UPDATE OF balance;  
+      new_balance := old_balance - debit;
+      IF new_balance >= minimum_balance THEN
+         UPDATE accounts SET balance = new_balance
+            WHERE acct_id = acct;
+         do_journal_entry(acct, 'D', new_balance);
+      ELSE
+         RAISE insufficient_funds;
+      END IF;
+   EXCEPTION
+      WHEN NO_DATA_FOUND THEN
+         new_status := 'Bad account number';
+      WHEN insufficient_funds THEN
+         new_status := 'Insufficient funds';
+      WHEN OTHERS THEN
+         new_status := SUBSTR(SQLERRM,1,70);
+   END debit_account;
+END bank_transactions;
+/
+
+3. Create a package called OVER_LOAD. Create two functions in this package, name each function PRINT IT. The function accepts a date or a character string and prints a date or a number, depending on how the function is invoked. Note:
+
+a. To print the date value, use DD-MON-YY as the input format, and Fm Month, dd yyyy as the output format Make sure to handle invalid input
+
+b. To print out the number, use 999.999.00 as the input format.

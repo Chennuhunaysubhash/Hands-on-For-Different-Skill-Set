@@ -1,0 +1,15 @@
+153 == 153 is armstrong numbers
+
+length of given number is 3 
+
+so power is 3
+ 1*1*1 + 5*5*5 + 3*3*3 == 153
+
+logic 
+temp = 153
+count = 0
+while(temp>0){
+ 
+ temp = temp/10
+ count = count+1
+}

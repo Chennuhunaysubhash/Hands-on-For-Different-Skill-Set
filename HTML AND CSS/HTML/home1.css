@@ -1,0 +1,102 @@
+.circle{
+    width:12vmin; height:12vmin;
+    position:fixed;
+    border-radius:50%;
+    background-color:red;
+    transition:top 0.8s, left 0.8s, transform 0.1s, opacity 0.8s, width 0.25s;
+    box-shadow:0 0 0.8vmin black;
+    text-align:center;
+    line-height:12vmin;
+    font-size:5vmin;
+}
+
+.circle:active{
+    transform:scale(0.88);
+}
+
+#mainCircle{
+    left:5vmin;
+    top:5vmin;
+    z-index:2;
+}
+
+#circle11{
+    left:29vmin;
+    top:5vmin;
+}
+
+#circle12{
+    left:53vmin;
+    top:5vmin;
+}
+
+#circle13{
+    left:77vmin;
+    top:5vmin;
+}
+
+#circle21{
+    left:5vmin;
+    top:29vmin;
+}
+
+#circle22{
+    left:5vmin;
+    top:53vmin;
+}
+
+#circle23{
+    left:5vmin;
+    top:77vmin;
+}
+
+/*-------------------*/
+
+#col{
+    position:absolute;
+    width:70%;
+    height:70%;
+    left:50%;
+    top:50%;
+    transform:translate(-50%, -50%);
+    border-radius:50%;
+    outline:none;
+}
+
+body{
+    background:white;
+    transition:background 0.2s;
+}
+
+a{
+    color:black;
+}
+
+#copy{
+    position:fixed;
+    right:0;
+    bottom:0;
+    margin:0;
+    color:white;
+}
+
+#gpsContent{
+    position:absolute;
+    left:0;
+    top:0;
+    z-index:-1;
+    opacity:0;
+    text-align:center;
+    font-size:4vmin;
+    font-weight:bold;
+    border-radius:50vmax;
+}
+
+#set{
+    position:fixed;
+    bottom:-5vmin; left:0;
+    font-size:4vmin;
+    margin:0;
+    transition:bottom 0.5s;
+}
+

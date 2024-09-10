@@ -1,0 +1,14 @@
+errors in face_reg_project
+1. install visual studio with c++ (2.08GB)
+after
+2. install cmark python package
+3. install dlib package
+first try new version if any error occurs
+then go for this link:- https://pypi.org/simple/dlib/
+or install dlib 19.18.00 version
+than
+4. install face_recognition package
+5. install opencv
+6. install numpy
+and also install os, datatime packages if in case not installed
+in python 

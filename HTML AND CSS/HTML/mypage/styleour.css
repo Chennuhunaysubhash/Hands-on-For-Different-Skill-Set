@@ -1,0 +1,41 @@
+body
+{
+    background-image: url("D:\my html tool/laptop.jpeg");
+    background-size: cover;
+    background-position: center;
+    
+    color: rgb(244, 249, 250) !important;
+}
+.services
+{
+margin: 90px auto;
+text-align: center;
+color: white;
+}
+h1{
+    font-family: sans-serif;
+    letter-spacing: 1px;
+}
+h1::after
+{
+    content: '';
+    background: rgb(250, 251, 252);
+    display: block;
+    width: 150px;
+    height: 3px;
+    margin: 10px auto;
+}
+.icon
+{
+    font-size: 40px;
+    margin: 20px auto;
+    padding: 20px;
+    height: 80px;
+    width: 80px;
+    border: 1px solid white;
+    border-radius: 50%;
+}
+.col-md-3:hover{
+    box-shadow: 5px 7px 9px -3px rgba(255,255,255,0.5);
+    cursor: pointer;
+}

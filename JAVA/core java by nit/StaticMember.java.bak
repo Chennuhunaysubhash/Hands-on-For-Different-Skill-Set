@@ -1,0 +1,12 @@
+class StaticMember 
+{
+	
+	public static void main(String[] args) 
+	{
+		public static int a = 10;
+		System.out.println("main method");
+		System.out.println("a in static : "+StaticMember.a);
+	}
+
+	
+}

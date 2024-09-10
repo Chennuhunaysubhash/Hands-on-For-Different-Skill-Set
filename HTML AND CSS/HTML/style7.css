@@ -1,0 +1,24 @@
+body{
+    background-image: url("D:\my html tool/laptop.jpeg");
+    background-size: cover;
+    background-attachment: fixed;
+}
+.content{
+    background: rgb(247, 245, 245);
+    width: 50%;
+    padding: 40px;
+    margin: 100px auto;
+    font-family: calibri;
+    border-radius: 15px;
+}
+p{
+    font-size: 25px;
+    color: black;
+    font-weight: bold;
+}
+h1{
+    text-align: center;
+    font-size: 200%;
+    color: rgb(242, 246, 247);
+
+}

@@ -1,0 +1,325 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"clo",
+				"color\tproperty"
+			],
+			[
+				"h",
+				"h1\tTag"
+			],
+			[
+				"mar",
+				"margin-bottom\tproperty"
+			],
+			[
+				"backg",
+				"background-position\tproperty"
+			],
+			[
+				"co",
+				"cover\tbackground-size"
+			],
+			[
+				"box-",
+				"box-sizing\tproperty"
+			],
+			[
+				"li",
+				"link\tTag"
+			],
+			[
+				"ov",
+				"overflow\tproperty"
+			],
+			[
+				"wi",
+				"width\tproperty"
+			],
+			[
+				"ani",
+				"animation\tproperty"
+			],
+			[
+				"over",
+				"overflow-y\tproperty"
+			],
+			[
+				"a",
+				"attr()\tcontent"
+			],
+			[
+				"text",
+				"text-decoration\tproperty"
+			],
+			[
+				"rbg",
+				"rgba()\tcolor"
+			],
+			[
+				"font",
+				"font-size\tproperty"
+			],
+			[
+				"background",
+				"background-origin\tproperty"
+			],
+			[
+				"al",
+				"align-items\tproperty"
+			],
+			[
+				"fo",
+				"font-family\tproperty"
+			],
+			[
+				"m",
+				"margin\tproperty"
+			],
+			[
+				"c",
+				"Contact"
+			],
+			[
+				"t",
+				"Team"
+			],
+			[
+				"background-c",
+				"background-color\tproperty"
+			],
+			[
+				"bor",
+				"border-radius\tproperty"
+			],
+			[
+				"r",
+				"rgb()\tbackground"
+			],
+			[
+				"style",
+				"stylesheet"
+			],
+			[
+				"mi",
+				"min-height\tproperty"
+			],
+			[
+				"ti",
+				"title\tTag"
+			],
+			[
+				"anima",
+				"animation-delay\tproperty"
+			],
+			[
+				"tex",
+				"text-shadow\tproperty"
+			],
+			[
+				"ta",
+				"table-cell\tdisplay"
+			],
+			[
+				"col",
+				"color\tproperty"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"Package Control: ",
+				"Package Control: Install Package"
+			],
+			[
+				"install p",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 0.0
+	},
+	"console":
+	{
+		"height": 0.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/D/my html tool/de1.html",
+		"/D/my html tool/sytlemyworking.css",
+		"/D/my html tool/new/cloud.html",
+		"/C/Users/hunay/Desktop/h.html",
+		"/C/Users/hunay/AppData/Roaming/Sublime Text 3/Packages/User/Default (Windows).sublime-keymap",
+		"/D/my html tool/new/delll.html",
+		"/D/my html tool/new/cloud.css",
+		"/D/my html tool/style7.css",
+		"/D/my html tool/fullimage.html",
+		"/D/my html tool/new/new1.html",
+		"/D/my html tool/new/typing.css",
+		"/D/my html tool/new/typing.html",
+		"/D/wedoffiel/pulse.html",
+		"/D/wedoffiel/loader.css",
+		"/D/my html tool/mypage/mycss.css",
+		"/D/my html tool/mypage/styleour.css",
+		"/D/my html tool/mypage/myser.html",
+		"/D/my html tool/ourServices.html",
+		"/D/my html tool/ch.css",
+		"/C/Users/hunay/hddh",
+		"/C/Users/hunay/fjds",
+		"/D/my html tool/game.html",
+		"/D/my html tool/style000.css",
+		"/D/my html tool/page.html",
+		"/D/my html tool/style6.css",
+		"/D/my html tool/string.html",
+		"/D/my html tool/stylestring.css",
+		"/D/my html tool/stylevideo.css",
+		"/D/my html tool/myvideo.html"
+	],
+	"find":
+	{
+		"height": 0.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 0.0
+	},
+	"input":
+	{
+		"height": 0.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "circle.sublime-project",
+	"replace":
+	{
+		"height": 0.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 150.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

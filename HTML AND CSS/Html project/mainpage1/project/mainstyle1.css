@@ -1,0 +1,407 @@
+*{
+padding: 0;
+margin: 0;
+text-decoration: none;
+list-style: none;
+
+}
+body{
+font-family: montserrat;
+ background-size: cover;
+    background-image: url("background.jpeg");
+    background-repeat: no-repeat;
+    background-color: #bfbfbf;
+}
+nav{
+    background-color: #e0ebeb;
+    height: 0px;
+    width: 100%;
+}
+label.logo{
+    color: black;
+    font-size: 35px;
+    line-height: 80px;
+    padding: 0 30px;
+    font-weight: bold;
+}
+nav ul{
+    
+    float: right;
+    margin-right: 1px;
+}
+nav ul li{
+    display: inline-block;
+    line-height: 80px;
+    margin: 0 5px;
+}
+nav ul li a{
+    color: rgb(0, 0, 0);
+    font-size: 17px;
+    padding: 7px 13px;
+    border-radius: 3px;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+a.active,a:hover{
+background: #1b9bff;
+transition: 0.5s;
+}
+
+
+@media(max-width: 952pcx){
+    label.logo{
+        font-size: 30px;
+        padding-left: 50px;
+    }
+    nav ul li a{
+       font-size: 16px;
+    }
+    @media(max-width: 850px){
+        .checkbtn{
+            display: block;
+        }
+    }
+
+ul{
+    position: fixed;
+    width:100%;
+    height: 100vh;
+    background: #2c3e50;
+    top: 80px;
+    left: 0;
+    text-align: center;
+    transition: all 0.5s;
+}
+nav ul li{
+    display: block;
+    margin: 50px 0;
+    line-height: 30px;
+}
+nav ul li a{
+    font-size: 20px;
+}
+a:hover,a.active{
+    background: none;
+    color: #0082e6;
+}
+  #check:checked ~ ul{
+      left: 0;
+  }
+}
+
+.sizee{
+    height: 100%;
+    width: 100%;
+    
+}
+hr{
+    color: black;
+    opacity: 0.8;
+}
+div{
+    font-size: 1.5em;
+    margin-top: 15px;
+    padding: 150px;
+}
+#span1
+{
+    font-family: cursive;
+    font-style: oblique;
+    color: white;
+    font-weight: bold;
+    font-size: 1em;
+}
+#myname{
+    font-size: 3em;
+    font-weight: bold;
+    font-style: oblique;
+    color: #f2f2f2;
+    color: black;
+}
+#center-img {
+    width: 350px;
+    height: 350px;
+    border-radius: 50%;
+   margin-top: -285px;
+    margin-left:  650px;
+   opacity: 0.7;
+}
+
+#quotes{
+    padding: 0px;
+    margin-top: 50px;
+
+   font-weight: bold;
+   font-size: 0.8em; 
+}
+#bold1{
+    font-family: cursive;
+    
+    color: white; 
+    font-size: 1.1em;
+}
+.projects h2{
+    margin-top: -225px;
+    font-weight: bold;
+    font-family: cursive;
+    font-style: oblique;
+    color: white;
+
+}
+.projects h3{
+    padding: 10px;
+    font-size: 0.8em;
+    font-family: cursive;
+    font-style: oblique;
+
+}
+h4{
+    margin-top: -250px;
+    margin-left: 150px;
+    font-size: 1.2em;
+    font-family: cursive;
+    font-style: oblique;
+    font-weight: bold;
+    color: white;
+}
+#matter{
+    margin-left: 150px;
+    margin-right: 55px;
+    padding: 15px;
+    font-size: 1.1em;
+    font-family: cursive;
+    font-weight: bold;
+    font-style: oblique;
+    opacity: 0.8;
+}
+#software{
+    margin-left: 150px;
+    padding: 10px;
+    font-size: 1.5em;
+    font-weight: bold;
+    font-style: oblique;
+    color: white;
+}
+#soft{
+   text-align: center;
+     margin-left: 55px;
+    font-size: 1.25em;
+    font-weight: bold;
+    font-style: oblique;
+    color: white;
+}
+#soft span{
+     font-size: 1.4em;
+    font-weight: bold;
+    font-style: oblique;
+    color: black;
+}
+.more{
+    margin-top: -75px;
+    font-size: 1.4em;
+    font-style: oblique;
+    font-weight: bold;
+    color: white;
+    text-align:  right;
+    margin-right: -80px;
+}
+#pdf{
+    font-size: 0.8em;
+    color: black;
+}
+.more a{
+    cursor: pointer;
+    color: blue;
+    font-size: 0.9em;
+} 
+.skills{
+    width: 500px;
+    margin: 60px auto;
+    color: white;
+    
+    padding: 30px;
+}
+div h1{
+    text-align: center;
+}
+.skills li {
+    margin: 20px 0;
+    padding: 10px;
+}
+.bar{
+    background: #353b48;
+    display: block;
+    height: 2px;
+    border: 1px solid rgba(0,0,0,0.3);
+    border-radius: 3px;
+    overflow: hidden;
+    box-shadow: 0 0 10px #2187e7;
+
+}
+.bar span{
+    height: 2px;
+    float: left;
+    background: #2187e7;
+}
+.skills h3{
+    color: black;
+    font-family: sans-serif;
+    font-weight: bold;
+}
+.html{
+    width: 90%;
+    animation: html 2s;
+}
+.css{
+    width: 65%;
+    animation: css 2s;
+}
+.js{
+    width: 80%;
+    animation: js 2s;
+}
+.python{
+    width: 85%;
+    animation: python 2s;
+}
+.java{
+    width: 80%;
+    animation: java 2s;
+}
+.cpro{
+    width: 80%;
+    animation: cpro 2s;
+}
+.data-base{
+    width: 60%;
+    animation: data-base 2s;
+}
+@keyframes html{
+    0%{
+        width: 0%;
+    }
+    100%{
+        width: 90%;
+    }
+}
+@keyframes css{
+    0%{
+        width: 0%;
+    }
+    100%{
+        width: 65%;
+    }
+}
+@keyframes js{
+    0%{
+        width: 0%;
+    }
+    100%{
+        width: 80%;
+    }
+}
+@keyframes python{
+    0%{
+        width: 0%;
+    }
+    100%{
+        width: 85%;
+    }
+}
+@keyframes java{
+    0%{
+        width: 0%;
+    }
+    100%{
+        width: 80%;
+    }
+}
+@keyframes cpro{
+    0%{
+        width: 0%;
+    }
+    100%{
+        width: 80%;
+    }
+}
+@keyframes data-base{
+    0%{
+        width: 0%;
+    }
+    100%{
+        width: 60%;
+    }
+}
+
+.about-one
+{
+    margin: 0;
+    padding: 0px;
+    margin-left: 80px;
+    margin-top: 80px;
+    font-size: 2.5em;
+    color: white;
+}
+
+.images-one{
+   
+    background-color: red;
+    text-align: center;
+    border-radius: 10%;
+    
+}
+.images-one img{
+    width: 270px;
+    margin-top: -60px;
+    border-radius: 50%;
+}
+.images-one h3{
+    font-size: 1.5em;
+    font-weight: 900;
+}
+.images-one p{
+    padding: 10px;
+    font-size: 25px; 
+}
+.web-one{
+    font-size: 18px;
+    font-weight: bold;
+}
+.social-one{
+    background-color: red;
+    border-radius: 50%;
+   color: black;
+   padding: 20px;
+ }
+ .social-one:hover{
+    color: blue;
+ }
+ .resume{
+    margin-top: -270px;
+    align-items: center;
+    text-align: center;
+
+ }
+ .resume a {
+    color: white;
+    background-color: black;
+    display: inline-block;
+    width: 130px;
+    text-align: center;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 10px;
+    padding:  6px;
+}
+
+.resume a:hover{
+    color: red;
+    background-color: white;
+}
+
+
+
+
+
+

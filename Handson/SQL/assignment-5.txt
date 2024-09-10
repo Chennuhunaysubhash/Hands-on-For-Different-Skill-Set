@@ -1,0 +1,104 @@
+125. Create table emp with only one column empno.
+ans
+Create table emp (empno number (5));
+126. Add this column to emp table ename Varchar (20).
+ans
+alter table emp add ename varchar2 (20) not null;
+127. OOPS! I forgot to give the primary key constraint. Add it now.
+ans
+alter table emp add constraint emp_empno primary key (empno);
+128. now increase the length of the ename column to 30 characters.
+ans
+alter table emp modify ename varchar2 (30);
+129. Add salary column to emp table.
+ans
+alter table emp2 add sal number (7, 2); 
+130. I want to give a validation saying that sal cannot be greater 10,000(note provide a name for this column).
+ans
+alter table emp add constraint emp_sal_check check (sal<10000);
+131. For the time being, I have decided that I will not impose this validation. My boss has agreed to pay more than 10,000.
+ans
+Alter table emp disable constraint emp_sal_check;
+132. My boss has changed his mind. Now he doesn’t want to pay more than10, 000. So revoke that salary constraint
+ans
+Alter table emp enable constraint emp_sal_check;
+133. Add a column called mgr to your emp table.
+ans
+Alter table emp add mgr number (5);
+134. Oh! This column should be related to the empno. Give a command to add this constraint.
+ans
+alter table emp add constraint mgr_dept foreign key(mgr) references emp(empno);
+135. Add deptno column to your emp table;
+ans
+alter table emp add(deptno number(5));
+136. This deptno column should be related to deptno column of dept table;
+ans
+Alter table emp add constraint emp_deptno foreign key (deptno) references dept (deptno);
+137. Give the command to add the constraint.
+ans
+alter table <table_name> add constraint <constraint_name> <constraint type>
+ex
+alter table emp2 add constraint emp_sal_check check(sal<9999); 
+138. Create table called as newemp. Using single command create this table as well as get data into this table(use create table as);
+ans
+create table newemp as select *from emp;
+139. Create a table called newemp. This table should contain only empno, ename, dname.
+ans
+create table newemp as select empno, ename, dname from emp e, dept d where e.deptno=d.deptno;
+140. create view emp_view1 as select first_name, last_name,job_id,department_id from employees;
+ans
+create view emp_view1 as select first_name, last_name,job_id,department_id from employees;
+141. apply any add/update/delete operation on the simple view and verify the view and the base table  contents.
+ans
+delete * from emp_view1 where department_id = 10;
+142. Create a view on department table with check option for sales department. 
+ans
+create view emp_view4 as select * from departments where DEPARTMENT_NAME = 'sale' WITH CHECK OPTION;
+143. create a read only view and verify whether it prevent any write operation.
+ans
+create or replace force view view1 as select * from emp where deptno = 30 with read only;
+144. create a complex view on more than one base table on join condition and query the view 
+ans
+create view locations_view as select d.department_id, d.department_name, l.location_id, l.city from departments d, locations l where d.location_id = l.location_id;
+
+for display
+
+select column_name, updatable from user_updatable_columns where table_name = 'locations_view';
+145. create a sequence foremployee  primary key column which will automatically generate ids for the employees
+ans
+CREATE SEQUENCE sequence_1 start with 1 increment by 1 minvalue 0 maxvalue 100 cycle;
+146. apply the sequence in any of dml query.
+ans
+CREATE SEQUENCE sequence_1 start with 1 increment by 1 minvalue 0 maxvalue 100 cycle;
+DML
+CREATE TABLE employees_1(ID number(10),NAME char(20));
+
+INSERT into employees_2 VALUES(sequence_1.nextval,'scott');
+INSERT into employees_2 VALUES(sequence_1.nextval,'smith');
+147. create non unique index on the non primary key and non-unique columns which you frequently access in your queries.
+ans
+CREATE CLUSTERED INDEX ixcEmployee ON tblEmployee (EmpName)
+			or
+CREATE TABLE TAB_TEST ( ID NUMBER, NAME VARCHAR2(10) );
+ALTER TABLE TAB_TEST ADD CONSTRAINT ID_PK PRIMARY KEY (ID) USING INDEX ( CREATE INDEX ID_0P ON TAB_TEST(ID ASC) );
+COL INDEX_NAME FOR A10;
+COL INDEX_TYPE FOR A10;
+COL TABLE_NAME FOR A10;
+ COL UNIQUENESS FOR A15;
+ COL STATUS FOR A10;
+ SELECT INDEX_NAME, INDEX_TYPE, TABLE_NAME, UNIQUENESS, STATUS FROM USER_INDEXES WHERE TABLE_NAME = 'TAB_TEST';
+select * from tab_test;
+148. create 2 new user and grant them 2 different roles which contains system and object privileges
+ans
+CREATE USER books_admin1 IDENTIFIED BY MyPassword;
+GRANT CONNECT TO books_admin;
+CREATE USER books_admin2 IDENTIFIED BY MyPassword;
+GRANT CONNECT, RESOURCE, DBA TO books_admin2;
+149. revoke the roles from respective users and verify the access privileges.
+ans
+revoke select, update, insert on emp from hunay; 
+150. display all user defined objects from a data dictionary view.
+ANS
+SELECT object_name, object_type FROM USER_OBJECTS; 
+
+

@@ -1,0 +1,34 @@
+import csv
+with open('innovators.csv', 'r') as file:
+    reader = csv.reader(file)
+    for row in reader:
+        print(row)
+
+
+import datetime
+from datetime import date
+import pandas as pd
+date_cols = ["Name"]
+df = pd.read_csv("Vaccination1.csv", parse_dates=date_cols)
+
+
+print(df[0])
+
+def write_data(name, ad):
+    with open('Vaccination1.csv', 'r+') as f:
+        mydatalist = f.readline()
+        namelist = []
+        for line in mydatalist:
+            entry = line.split(',')
+            namelist.append(entry[0])
+        if name not in namelist:
+            now = datetime.datetime.now()
+            dtstring = now.strftime('%H:%M:%S')
+            f.writelines(f'\n{name},{ad},{dtstring}')
+write_data('hunay',45)
+
+
+
+
+total(customer_items)
+bill_print(customer_items)

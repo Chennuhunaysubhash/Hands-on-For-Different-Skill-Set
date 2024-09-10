@@ -1,0 +1,85 @@
+1.Modifications to data are allowed on tables only during normal office hours of 9:00 a.m. until 6:00 p.m., i.e. Monday through Friday. Create a stored procedure called RESTRICT DML that prevents the DML statements from executing outside of normal office hours, returning an alert message, "You may make changes only during normal business hours."
+
+ans
+CREATE OR REPLACE PROCEDURE secure_dml
+IS
+BEGIN
+  IF TO_CHAR (SYSDATE, 'HH24:MI') NOT BETWEEN '08:00' AND '18:00'
+      OR TO_CHAR (SYSDATE, 'DY') IN ('SAT', 'SUN')
+  THEN
+  RAISE_APPLICATION_ERROR (-20001, 
+    'You may only make changes during normal office hours.');
+  END IF;
+END secure_dml;
+/
+
+2. Create a statement trigger on the NEW EMP table that calls the above procedure.
+
+ans
+
+CREATE OR REPLACE TRIGGER secure_emp
+  BEFORE INSERT OR UPDATE OR DELETE ON new_emp
+BEGIN
+    secure_dml;
+END secure_emp;
+
+3.Employee should receive an automatic increase in salary if the minimum salary for a job is increased. Implement this requirement through a trigger on the JOBS table.
+
+a. Create a stored procedure named UPD EMP SAL to update the salary amount. This procedure accepts two parameters: the job ID for which salary has to be updated and the new minimum salary for this job ID. This procedure is executed from the trigger on the JOBS table.
+ans
+
+CREATE OR REPLACE PROCEDURE upd_emp_sal
+  (p_job_id IN employees.job_id%TYPE,
+   p_min_sal IN employees.salary%TYPE)
+IS
+  CURSOR c_emp_sal_update(cp_job_id employees.job_id%TYPE) IS
+    SELECT salary
+    FROM employees
+    WHERE job_id = cp_job_id
+    FOR UPDATE OF salary NOWAIT;
+BEGIN
+  FOR v_c IN c_emp_sal_update(p_job_id)
+  LOOP
+    IF v_c.salary < p_min_sal THEN
+      UPDATE employees SET salary = p_min_sal
+      WHERE CURRENT OF c_emp_sal_update;
+    END IF;
+  END LOOP;
+END upd_emp_sal;
+/
+
+b. Create a row trigger named UPDATE_EMP_SALARY on the JOBS table that invokes the procedure UPD_EMP_SAL when the minimum salary in the JOBS table is updated for a specified job ID.
+ans
+
+CREATE OR REPLACE TRIGGER update_emp_salary
+  AFTER INSERT OR UPDATE
+  OF min_salary ON jobs
+  FOR EACH ROW
+BEGIN
+  IF :NEW.min_salary > :OLD.min_salary THEN
+    upd_emp_sal(:NEW.job_id, :NEW.min_salary);
+  END IF;
+END update_emp_salary;
+/
+c. Query the EMPLOYEES table to see the current salary for employees who
+are programmers.
+ans
+
+SELECT employee_id, job_id, salary
+FROM employees where job_id ='IT_PROG';
+
+d. Increase the minimum salary for the programmer job from 20,000 to 25,000.
+
+ans
+UPDATE jobs
+SET min_salary = 20000
+WHERE job_id = 'IT_PROG';
+4. Create a trigger for the DEPT table so that whatever a row is deleted from it, the corresponding rows of EMPS table are also deleted.
+ans
+Create or replace trigger dept_backup_trig
+After Delete on dept
+for each row
+begin
+ insert into dept_d values ( :old.deptno, :old.dname, :old.loc);
+end;
+/

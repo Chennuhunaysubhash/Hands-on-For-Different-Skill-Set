@@ -1,0 +1,97 @@
+body{
+	margin: 0;
+	padding: 0;
+	font-family: 'Open Sans', sans-serif;
+	background-color: #bfbfbf;
+}
+h1{
+	margin: 0;
+	font-weight: 400; 
+}
+h2{
+	margin: 0;
+	font-weight: 600;
+	display: inline-block;
+}
+#link{
+	font-size: 20px;
+	
+}
+h3{
+	
+	font-weight: 600;
+}
+p{
+
+	font-weight: 600;
+}
+.box{
+	background: #fff;
+	width: 50rem;
+	padding: 3rem;
+	margin: 1rem auto;
+	border-radius: 0.5rem;
+}
+.header{
+	display: grid;
+	width: 100%;
+	
+	grid-template-columns:  40% 60%;
+	border-radius: 5px;
+
+}
+.header-left{
+	margin-left:   20px;
+	margin-top: 20px; 
+	text-align:  center;
+}
+.header-left h1{
+	font-weight: bold;
+	text-align: center;
+
+}
+.header-left img{
+	width: 45%;
+    border-radius: 5px;
+}
+
+.header-right{
+	width: 100%;
+	display: grid;
+	justify-content: end; 
+	text-align: right;
+	
+}
+.header-right p{
+	display: inline;
+	font-weight: bold;
+}
+.icon{
+	background-color: rgb(223,223,223);
+	font-size: 1.5rem;
+	margin-right: 0.5rem;
+	opacity: 0.7;
+}
+.gery
+{
+	background-color: rgb(223,223,223);
+}
+
+
+table{
+	width: 100%;
+	 border: 1px solid white;
+	 border-collapse: collapse;
+	 text-align: center;
+}
+td{
+	font-weight: 500;
+
+}
+ul li{
+	font-weight: 600;
+}
+
+
+
+

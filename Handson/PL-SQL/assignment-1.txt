@@ -1,0 +1,140 @@
+1. write a pl/sql code to display the following details.
+ename   designation  old salary  new salary
+-------------------------------------------
+
+employees increment rate is based on the following criteria.
+
+  no of exp    increment rate
+--------------------------------
+  < 2               15% of salary
+  > 2 and < 4       25% of salary
+  > 4               35% of salary    
+ans
+DECLARE
+    CURSOR employee_cur IS
+      SELECT empno,
+             sal,exp
+      FROM   emp_temp
+      FOR UPDATE;
+    incr_sal NUMBER;
+BEGIN
+    FOR employee_rec IN employee_cur LOOP
+        IF employee_rec.exp > 4 THEN
+          incr_sal := .35;
+        ELSIF employee_rec.exp < 2 THEN
+          incr_sal := .10;
+        ELSE
+          incr_sal := .25;
+        END IF;
+
+        UPDATE emp_temp
+        SET    new_sal = sal + sal * incr_sal
+        WHERE  CURRENT OF employee_cur;
+         
+    END LOOP;
+END;
+/
+select ename, job as "desig", sal as "old sal", new_sal as "new sal" from emp_temp;
+
+2. Write a PL/SQL code to accept an employee number from the user and display whether it is exists or not.
+
+ans
+set serveroutput on
+DECLARE
+   Emp_number   number(4) := &empno;
+   Emp_name     VARCHAR2(10);
+BEGIN
+   SELECT Ename INTO Emp_name FROM Emp
+      WHERE Empno = Emp_number;   
+   DBMS_OUTPUT.PUT_LINE('Employee name is ' || Emp_name);
+EXCEPTION
+   WHEN NO_DATA_FOUND THEN
+      DBMS_OUTPUT.PUT_LINE('No such employee: ' || Emp_number);
+END;
+/
+
+3. write a pl/sql code to display the name , salary and grade of the employee by accepting employee code Grade if 'A' if salary > 25000,'B' if salary>15000,'c' for other salaries.
+ans
+DECLARE
+    CURSOR employee_cur IS
+      SELECT empno,
+             sal
+      FROM   emp_temp
+      FOR UPDATE;
+    grade_new varchar(5);
+BEGIN
+    FOR employee_rec IN employee_cur LOOP
+        IF employee_rec.sal > 3000 THEN
+          grade_new := 'A';
+        ELSIF employee_rec.sal > 1500  THEN
+          grade_new := 'B';
+        ELSE
+          grade_new := 'C';
+        END IF;
+
+        UPDATE emp_temp
+        SET    grade = grade_new
+        WHERE  CURRENT OF employee_cur;
+         
+    END LOOP;
+END;
+
+or
+
+create or replace procedure emp_pr as
+    cursor emp_c is select sal from emp_temp for update;
+    begin
+      for employee_rec in emp_c loop
+       update emp set
+          grade = case when employee_rec.sal  > 3000 then 'A'
+                       when employee_rec.sal  > 2000 then 'B'
+                       when employee_rec.sal  > 1000 then 'C'
+                       when employee_rec.sal <= 1000 then 'D'
+                end
+       where current of emp_c;
+     end loop;
+  end; 
+   /
+
+BEGIN
+emp_pr;
+END
+
+4. display the account holders whose credit limit exceds rs 1,00,000.
+
+DECLARE
+     acct_number   number(4) := 3;
+      ACCT_NAME1 VARCHAR2(14);
+       CURSOR employee_cur1 IS
+         SELECT dname ,limit_c
+         FROM   Bank_acc;
+   BEGIN
+           SELECT dname INTO acct_name1 FROM Bank_acc  WHERE acc_no= acct_number;
+          FOR acct_rec IN employee_cur1 LOOP
+           IF acct_rec.limit_c > 100000 THEN
+              DBMS_OUTPUT.PUT_LINE('acct_name is ' || ACCT_NAME1);
+   END IF;
+ 
+   END LOOP;
+   END;
+
+
+5.In loop, use a cursor to retrive the department number and department name from dept table for those deptno is lessthan 40. use the same cursor to display for those employees working for HR deparment.
+ans
+DECLARE  
+   v_deptno NUMBER:=50;  
+   c_name dept.dname%type;    
+   CURSOR c_emp_cursor is  
+      SELECT deptno, dname FROM dept where deptno<v_deptno;  
+BEGIN  
+   FOR dept_record IN c_emp_cursor
+   LOOP
+   IF dept_record.dname='HR' THEN
+      dbms_output.put_line(dept_record.dname||dept_record.deptno ||'HR department);
+        
+   END IF;
+      dbms_output.put_line(dept_record.dname   || dept_record.deptno);
+   END LOOP;  
+END;
+/
+  

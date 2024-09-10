@@ -1,0 +1,36 @@
+/*
+this program explain
+
+accessing static method in static method
+
+ 
+*/
+
+// Error ............
+// Becauses this keyword should be in non static method
+
+class  DemoStatic
+{
+	static DemoStatic obj  = new DemoStatic();// instance object(Gobal object ) so used in any were 
+	public static void main(String[] args) 
+	{
+		System.out.println("Hello World!");
+		DemoStatic.obj.m1(); 
+	}
+	static void m1()
+	{
+		/*
+		if acess  static method m2 in m1() we using this keyword
+		....
+		this keyword write only in non static method.
+		*/
+		System.out.println("m1....");
+		this.m2(); // obj.m2()
+	}
+	static void m2()
+	{
+		// static method
+		System.out.println("m2....");
+	}
+
+}

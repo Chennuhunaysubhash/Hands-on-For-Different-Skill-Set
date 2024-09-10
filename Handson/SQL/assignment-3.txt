@@ -1,0 +1,94 @@
+66. display  the name of the employee who earns highest salary.
+ans
+ select ename from emp where sal = (select max(sal+NVL(comm,0)) from emp);
+67. Display the employee number and name for an employee working as a clerk and earning the highest salary among clerks.
+ans
+select empno, ename from emp where job='CLERK' and sal= (select max (sal) from emp where job='CLERK');
+68. Display the names of a salesman who earns the salary more than the highest salary of any clerk.
+ans
+select ename, sal from emp where job='SALESMAN' and sal> (select max (sal) from emp where job='CLERK');
+69. Display the names of clerks who earn a salary more than the lowest salary of any salesman.
+ans
+select ename from emp where job='CLERK' and sal> (select min (sal) from emp where job='SALESMAN');76
+70. Display the names of employees who earn a salary more than that of Jones or that of salary greater than that of Scott.
+ans
+select ename, sal from emp where sal> (select sal from emp where ename='JONES') and sal> (select sal from emp where ename='SCOTT');
+71. Display the names of the employees who earn the highest salary in their respective departments.
+ans
+select ename, sal, deptno from emp where sal in (select max (sal) from emp group by deptno);
+72. Display the employees salary who earn the highest salaries in their respective job groups.
+ans
+select ename, sal, job from emp where sal in (select max (sal) from emp group by job);
+73. Display the employee names who are working in Chicago.
+ans
+ select ename from emp where deptno= (select deptno from dept where LOC='CHICAGO');
+74. Display the Job groups having a total salary greater than the maximum salary for managers.
+ans
+select job, sum (sal) from emp group by job having sum (sal) > (select max (sal) from emp where job='manager');
+75. Display the names of employees from department number 10 with a salary greater than that of any employee working in other departments.
+ans
+select ename from emp where deptno=10 and sal > any (select sal from emp where deptno not in 10);
+76. Display the names of the employees from department number 10 with a salary greater than that of all employees working in other departments.
+ans
+select ename from emp where deptno=10 and sal>all (select sal from emp where deptno not in 10);
+77. Display the common jobs from department number 10 and 20.
+ans
+Select job from emp where deptno=10 and  job in(select job from emp where deptno=20);
+78. Display the jobs found in department number 10 and 20 eliminate duplicate jobs.
+ans
+select job from emp where deptno=10 intersect select job from emp where deptno=20;
+79. Display the jobs which are unique to dept no 10
+ans
+select job from emp where deptno=10 minus select job from emp where deptno!=10;
+80. Display the details of those who do not have any person working under them.
+ans
+ select e.ename from emp, emp e where emp.mgr=e.empno group by e.ename having count (*) =1;
+81. Display the details of those employees who are in the sales department and grade is 3.
+ans
+select * from emp where deptno= (select deptno from dept where dname=’SALES’) and sal between (select losal from salgrade where grade=3) and (select hisal from salgrade where grade=3);
+83. SELECT those employee who joined the company before 31-dec-82 while their dept location is newyork or Chicago.
+ans
+select empno,ename,hiredate,dname,loc from emp,dept where (emp.deptno=dept.deptno)and hiredate <'31-dec-82' and dept.loc in('chicago','new york');
+84. DISPLAY EMPLOYEE NAME,JOB,DEPARTMENT,LOCATION FOR ALL WHO ARE WORKING AS MANAGER?
+ans
+select e.ename, e.job, d.dname, d.loc from emp e, dept d where d.deptno=e.deptno and e.job='manager';
+85. Display those employees whose manager’s name is Jones (and also with his manager’s name).
+ans
+select * from emp where mgr= (select empno from emp where ename='JONES') union select * from emp where empno= (select mgr from emp where ename='JONES');
+86. Display name and salary of ford if his Sal is equal to high Sal of his grade.
+ans
+ select ename, sal from emp e where ename='FORD' and sal=(select hisal from salgrade where grade=(select grade from salgrade where e.sal>=losal and e.sal<=hisal));
+87. Display employee name,job,depart name ,manager name,his grade and make out an under department wise?
+ans
+select e.ename,e.job,dname,emp.ename,grade from emp,emp e,salgrade,dept where emp.sal between losal and hisal and emp.empno=e.mgr and emp.deptno=dept.deptno order by dname;
+88. List out all the employee’s name, job, and salary grade and department name for everyone in the company except 'CLERK'. Sort on salary.
+ans
+ select empno, ename, sal, dname, grade from emp e, dept d, salgrade s where e.deptno=d.deptno and e.sal between s.losal and s.hisal and e.job<>'CLERK' order by sal;
+89. Display employee name, his job, and his manager. Display also employees’ who are without the manager.
+ans
+select e.ename, e.job, m.ename Manager from emp e,emp m where e.mgr=m.empno union select ename, job,'no manager' from emp where mgr is null;
+90. Display the name of those employees who are getting the highest salary.
+ans
+ select empno, ename, sal from emp where sal=(select max(sal) from emp);
+91. Display those employees whose salary is equal to an average of maximum and minimum.
+ans
+select * from emp where sal = (select (max(sal) + min(sal))/2 from emp);
+no row  are select
+select * from emp where sal > (select (max(sal) + min(sal))/2 from emp);
+92. Select count of employee in each department where count greater than 3;
+ans
+SELECT COUNT(empno), deptno FROM Emp GROUP BY deptno;
+and
+select count(*) as count,dept.dname 
+from emp 
+inner join dept on emp.deptno = dept.deptno 
+group by dept.dname
+93. Display those manager’s names whose salary is more than the average salary of his employees.
+ans
+select ename, sal from emp e where empno in (select mgr from emp) and e.sal> (select avg (sal) from emp where mgr=e.empno);
+94. Display employee name, Sal, comm, and net pay for those employees whose net pay are greater than or equal to any other employee salary of the company?
+ans
+select ename, sal, comm, sal+nvl (comm, 0) netPay from emp where sal+nvl (comm, 0)>=any (select sal from emp);
+95. Find out the number of employees whose salary is greater than there manager salary?
+ans
+

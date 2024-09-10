@@ -1,0 +1,19 @@
+class Developer
+{
+	public static void main(String[] args)
+	{
+		System.out.println("Hello World");
+		Lead.approve.previlege();
+	}
+}
+class Lead
+{
+	 Project approve = new Project();
+}
+class Project
+{
+	void previlege()
+	{
+		System.out.println("Ececution of a Process");
+	}
+}

@@ -1,0 +1,49 @@
+body{
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #333;
+}
+
+.image{
+    width: 260px;
+    overflow: hidden;
+    cursor: pointer;
+    position: relative;
+    margin: 0 20px;
+}
+
+.image img{
+    width: 100%;
+}
+
+.image::before{
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    filter: grayscale(100%);
+    transition: .5s linear;
+}
+
+.image:hover::before{
+    width: 0;
+}
+
+.image:nth-child(1)::before{
+    background-image: url(images/1.jpg);
+}
+
+.image:nth-child(2)::before{
+    background-image: url(images/2.jpg);
+}
+
+.image:nth-child(3)::before{
+    background-image: url(images/3.jpg);
+}

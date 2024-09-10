@@ -1,0 +1,24 @@
+class NonStaticVariable 
+{
+	int a, b;
+	NonStaticVariable()
+		{
+			System.out.println("Constructor");
+			System.out.println("a value: "+a);
+			System.out.println("b value: "+b);
+		}
+
+	public static void main(String[] args) 
+	{
+		NonStaticVariable obj = new NonStaticVariable();
+		obj.display();
+		
+	}
+	void display()
+	{
+			System.out.println("Display");
+			System.out.println("a value: "+a);
+			System.out.println("b value: "+b);
+	}
+
+}
